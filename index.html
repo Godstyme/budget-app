@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget App</title>
+    <link rel="stylesheet" href="assets/styles/style.css">
+  </head>
+  <body>
+    <main class="container">
+      <section class="app-view">
+        <h1>Budget application</h1>
+        <div class="budget-date-update">
+          Available budget on <label id="day">fri </label> <label id="date">12 </label>
+          <label id="month">November </label><label id="year">2020</label>
+        </div>
+        <section class="budget-info-holder">
+          <div class="budget-inc-exp-bal-holder">
+            <div class="budget-cap income">Income</div>
+            <div class="budget-cap expenses">Expenses</div>
+            <div class="budget-cap balance">Balance</div>
+          </div>
+          <div class="budget-inc-exp-bal-holder">
+            <div class="budget-cap income">#2000</div>
+            <div class="budget-cap expenses">#1300</div>
+            <div class="budget-cap balance">#700</div>
+          </div>
+        </section>
+        <section class="addExp-addIcome-Holder">
+          <div class="add-budget add-inco-holder">
+            <label for="">Add Income</label>
+            <div class="inputHolder">
+              <!-- <input type="text" name="" class="txt" placeholder="Enter your Expences title ..."> -->
+              <input type="text" name="" class="txt" placeholder="Enter your amount(₦)...">
+            </div>
+            <div>
+              <button class="btn">Add Income</button>
+            </div>
+          </div>
+          <div class="add-budget add-exp-holder">
+            <label for="">Add Expenses</label>
+            <div class="inputHolder">
+              <input type="text" name="" class="txt" placeholder="Enter your Expences title ...">
+              <input type="text" name="" class="txt" placeholder="Enter your amount(₦)...">
+            </div>
+            <div>
+              <button class="btn">Add Expences</button>
+            </div>
+          </div>
+        </section>
+
+      </section>
+    </main>
+    <script src="assets/scripts/app.js"></script>
+  </body>
+</html>
