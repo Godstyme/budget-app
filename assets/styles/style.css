@@ -94,6 +94,7 @@ th{text-transform: capitalize;text-align: left;}
   *{
     font-size: 1em !important;
   }
+  body{background: #2f303a;}
   body > main.container > section.app-view {
     width: 90%;
     border-radius: 0px;
@@ -148,6 +149,7 @@ th{text-transform: capitalize;text-align: left;}
   div.add-inco-holder{height: auto !important;}
   input.txt{font-size: 1.2em; padding: 4px 2px;}
   button.btn{padding: 10px;}
+  body{background: #2f303a;}
 }
 @media screen and (max-width: 299px) and (min-width: 200px){
   div.table-holder{
