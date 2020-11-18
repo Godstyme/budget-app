@@ -1,8 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 *{
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
-  font-family: sans-serif;
+  font-family: 'Roboto', 'Arial Narrow Bold', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 body{background: #FEB931;}
 body > main.container {
@@ -11,7 +12,6 @@ body > main.container {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background: #FFA500; */
 }
 body > main.container > section.app-view {
    width: 60%;
