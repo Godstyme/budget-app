@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap'); */
 *{
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
-  font-family: 'Roboto', 'Arial Narrow Bold', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: sans-serif;
 }
-body{background: #FEB931;}
+body{background: #fff;}
 body > main.container {
   padding: 20px 0px 30px 0px;
   width: 100%;
@@ -42,10 +42,7 @@ body > main.container > section.app-view > section.budget-info-holder > div.budg
   text-transform: uppercase;
   padding: 10px 0px;
 }
-.budget-cap{
-  color: #fff;
-  padding: 0px 5px;
-}
+.budget-cap{color: #fff;padding: 0px 5px;}
 body > main.container > section.app-view > section.addExp-addIcome-Holder{
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -78,11 +75,14 @@ button.btn{
   border: none;
   outline: none;
 }
-h1#table-cap{text-align: center;text-transform: uppercase; color: #fff; padding: 20px 0px; text-shadow: 2px 2px 2px #000;}
-table{
-  width: 100%;
-  color: #fff;
+h1#table-cap{
+  text-align: center;
+  text-transform: uppercase; 
+  color: #fff; 
+  padding: 20px 0px; 
+  text-shadow: 2px 2px 2px #000;
 }
+table{width: 100%;color: #fff;}
 table, th, td {
   border: 1px solid black;
   border-collapse: collapse;
@@ -91,9 +91,7 @@ table, th, td {
 th{text-transform: capitalize;text-align: left;}
 
 @media screen and (max-width: 299px) and (min-width: 200px) {
-  *{
-    font-size: 1em !important;
-  }
+  *{font-size: 1em !important;}
   body{background: #2f303a;}
   body > main.container > section.app-view {
     width: 90%;
@@ -105,7 +103,6 @@ th{text-transform: capitalize;text-align: left;}
   justify-content: start;
   column-gap: 8px;
   font-size: 0.8em !important;
-
 }
   body > main.container > section.app-view > section.addExp-addIcome-Holder{
     display: grid;
@@ -116,27 +113,22 @@ th{text-transform: capitalize;text-align: left;}
     grid-template-columns: 100%;
     padding: 10px 5px;
   }
-  div.add-budget{
-    padding: 10px 0px;
-  }
+  div.add-budget{padding: 10px 0px;}
   div.add-inco-holder{height: auto !important;}
   input.txt{font-size: 1.2em; padding: 4px 2px;}
   button.btn{padding: 10px;}
+  h1#table-cap,body > main.container > section.app-view > h1{letter-spacing: 2.5px;}
 }
 
 @media screen and (max-width: 1000px) and (min-width: 300px) {
-  *{
-    font-size: 1em !important;
+  *{font-size: 1em !important;}
+  body > main.container {padding: 0px 0px 30px 0px;}
+  body > main.container > section.app-view {width: 100%;border-radius: 0px;}
+  body > main.container > section.app-view > section.budget-info-holder > div.budget-inc-exp-bal-holder {
+    display: grid;
+    grid-template-columns: repeat(3, 30%);
+    justify-content: center;
   }
-  body > main.container > section.app-view {
-    width: 90%;
-    border-radius: 0px;
- }
- body > main.container > section.app-view > section.budget-info-holder > div.budget-inc-exp-bal-holder {
-  display: grid;
-  grid-template-columns: repeat(3, 30%);
-  justify-content: center;
-}
   body > main.container > section.app-view > section.addExp-addIcome-Holder{
     display: grid;
     grid-template-columns: 100%;
@@ -144,15 +136,13 @@ th{text-transform: capitalize;text-align: left;}
   div.add-budget > div.inputHolder {
     display: grid;
     grid-template-columns: 100%;
-    padding: 10px 5px;
+    padding: 10px 20px;
   }
   div.add-inco-holder{height: auto !important;}
-  input.txt{font-size: 1.2em; padding: 4px 2px;}
-  button.btn{padding: 10px 40px;}
+  input.txt{font-size: 1.2em; padding: 4px 8px;}
+  button.btn{padding: 10px 40px; margin-top: 1.6em;}
   body{background: #2f303a;}
-}
-@media screen and (max-width: 299px) and (min-width: 200px){
-  div.table-holder{
-    /* overflow-x: scroll; */
-  }
+  h1#table-cap,body > main.container > section.app-view > h1{letter-spacing: 2.5px;}
+  .app-caption{padding: 30px 0px;}
+  body > main.container > section.app-view > div.budget-date-update {margin-bottom: 0px; padding: 0px 0px; }
 }
