@@ -2,6 +2,7 @@
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
+  font-family: sans-serif;
 }
 body{background: #FEB931;}
 body > main.container {
@@ -13,10 +14,9 @@ body > main.container {
   /* background: #FFA500; */
 }
 body > main.container > section.app-view {
-   /* height: 100vh; */
    width: 60%;
    background: #18204A;
-   border-radius: 30px;
+   border-radius: 30px 30px 0px 0px;
    padding: 20px 10px;
 }
 body > main.container > section.app-view > h1 {
@@ -45,7 +45,6 @@ body > main.container > section.app-view > section.budget-info-holder > div.budg
 .budget-cap{
   color: #fff;
   padding: 0px 5px;
-  /* background: chocolate; */
 }
 body > main.container > section.app-view > section.addExp-addIcome-Holder{
   display: grid;
@@ -53,7 +52,6 @@ body > main.container > section.app-view > section.addExp-addIcome-Holder{
   padding: 20px 0px;
   justify-self: center;
   gap: 20px;
-  /* background: chocolate; */
 }
 div.add-budget{
   background: #1F2C5B;
@@ -69,7 +67,7 @@ div.add-budget > div.inputHolder {
   row-gap: 20px;
 }
 div.add-inco-holder{height: 200px !important;}
-input.txt{font-size: 1.2em; padding: 10px 2px;}
+input.txt{font-size: 1.2em; padding: 10px 5px;}
 button.btn{
   padding: 15px 10px;
   cursor: pointer;
@@ -80,6 +78,17 @@ button.btn{
   border: none;
   outline: none;
 }
+h1#table-cap{text-align: center;text-transform: uppercase; color: #fff; padding: 20px 0px;}
+table{
+  width: 100%;
+  color: #fff;
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 15px 10px;
+}
+th{text-transform: capitalize;text-align: left;}
 
 @media screen and (max-width: 299px) and (min-width: 200px) {
   *{
@@ -139,4 +148,9 @@ button.btn{
   div.add-inco-holder{height: auto !important;}
   input.txt{font-size: 1.2em; padding: 4px 2px;}
   button.btn{padding: 10px;}
+}
+@media screen and (max-width: 299px) and (min-width: 200px){
+  div.table-holder{
+    /* overflow-x: scroll; */
+  }
 }
