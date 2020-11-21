@@ -14,13 +14,15 @@ const date = document.querySelector('#date').innerHTML = dateBuilder(now)
 
 
 let btnAddIncome = document.querySelector('.btn-add-income')
-let incomeValue = document.querySelector('.income-value').innerHTML
+let incomeValue = document.querySelector('.income-value2').innerHTML
 let incomeField = document.querySelector('.txt-income')
-let IncomeResult
+let incomeResult
 btnAddIncome.addEventListener('click', () => {
-  IncomeResult = Number(incomeValue) + Number(incomeField.value)
-  console.log(IncomeResult)
-  incomeValue = IncomeResult
+  incomeResult = Number(incomeValue) + Number(incomeField.value)
+  console.log(incomeResult)
+  incomeValue = incomeResult
+  incomeResult = document.querySelector('.income-value2')
+  incomeResult.innerHTML = incomeValue
   incomeField.value = ''
 })
 
@@ -36,7 +38,6 @@ let displayExp = () => {
 let addExpenses = (expensesList) => {
   expensesArray.push(expensesList)
 }
-
 
 
 
