@@ -47,26 +47,22 @@ let init = () => {
 
 let addBudget = () => {
   btnAddIncome.addEventListener('click', () => {
-    let incomeResult
-    incomeResult = Number(incomeValue) + Number(incomeField.value)
-    console.log(incomeResult)
-    incomeValue = incomeResult
-    incomeResult = document.querySelector('.income-value2')
-    incomeResult.innerHTML = incomeValue
-    incomeField.value = ''
+    if (incomeField.value.length == 0) {
+      alert("Text field is empty")
+    } else {
+      let incomeResult
+      incomeResult = Number(incomeValue) + Number(incomeField.value)
+      console.log(incomeResult)
+      incomeValue = incomeResult
+      incomeResult = document.querySelector('.income-value2')
+      incomeResult.innerHTML = incomeValue
+      incomeField.value = ''
+    }
   })
 }
 
 let addExpensesList = () => {
-  btnAddIncome.addEventListener('click', () => {
-    let incomeResult
-    incomeResult = Number(incomeValue) + Number(incomeField.value)
-    console.log(incomeResult)
-    incomeValue = incomeResult
-    incomeResult = document.querySelector('.income-value2')
-    incomeResult.innerHTML = incomeValue
-    incomeField.value = ''
-  })
+
 }
 
 let hideDisplayMsg = () => budgetHolder.innerHTML = displayMsg;
