@@ -14,6 +14,7 @@ const date = document.querySelector('#date').innerHTML = dateBuilder(now)
 
 // ============= declarartion of variables ============
 let btnAddIncome = document.querySelector('.btn-add-income')
+let btnAddExp = document.querySelector('.btn-add-expense')
 let incomeValue = document.querySelector('.income-value2').innerHTML
 let totalExp = document.querySelector('.tExpences').innerHTML
 let totalBal = document.querySelector('.tBalance').innerHTML
@@ -29,12 +30,12 @@ let budgetListArr = []
 window.addEventListener('load', () => {
   init();
   addBudget()
-  addExpensesList()
+  saveBudget()
 });
 
 
 
-let init = () => {
+const init = () => {
   let loadBudgets = localStorage.getItem(storageName)
   if(loadBudgets) {
     budgetListArr = JSON.parse(loadBudgets)
@@ -45,7 +46,7 @@ let init = () => {
   }
 }
 
-let addBudget = () => {
+const addBudget = () => {
   btnAddIncome.addEventListener('click', () => {
     if (incomeField.value.length == 0) {
       alert("Text field is empty")
@@ -61,11 +62,68 @@ let addBudget = () => {
   })
 }
 
-let addExpensesList = () => {
+let hideDisplayMsg = () => budgetHolder.innerHTML = displayMsg;
 
+const saveBudget = () => {
+  btnAddExp.addEventListener('click', () => {
+    if (addBudgetTitle.value.length == 0 || addBudgetPrice.value.length == 0) {
+      alert("Title or expenses field is empty :)")
+    } else {
+      let id = getLastId() + 1;
+      // let expenseData = {
+      //   id,
+      //   title,
+      //   expense,
+      // };
+      // budgetListArr.push(expenseData);
+      updateLocalS();
+      // renderMovies(budgetListArr);
+      addBudgetTitle.value = addBudgetPrice.value = ''
+    }
+  })
 }
 
-let hideDisplayMsg = () => budgetHolder.innerHTML = displayMsg;
-hideDisplayMsg()
+const updateLocalS = () =>  localStorage.setItem(storageName, JSON.stringify(budgetListArr));
+
+const createHeaderRow = () => {
+  let headerContent = ['S/N', 'TITLE', 'EXPENSES', 'ACTIONS'];
+  let tr = document.createElement('tr');
+  for(let i = 0; i < headerContent.length; i++){
+      let td = document.createElement('td');
+      td.innerHTML = headerContent[i] ;
+      tr.appendChild(td);
+  }
+  return tr;
+}
+
+
+function createMovieRows(movie, sn){
+  let tr = document.createElement('tr');
+  let snTd = document.createElement('td');
+  snTd.innerHTML = sn + 1;
+  let keys = ['title', 'expenses'];
+  tr.appendChild(snTd);
+  for(let i = 0; i < keys.length; i++){
+      let td = document.createElement('td');
+      td.innerHTML = movie[keys[i]];
+      tr.appendChild(td);
+  }
+  let actionTd = document.createElement('td');
+  let deletebtn = document.createElement('button');
+  deletebtn.classList.add('delete');
+  deletebtn.dataset.id = movie.id;
+  deletebtn.innerHTML = 'delete';
+  actionTd.appendChild(deletebtn);
+  tr.appendChild(actionTd);
+  return tr;
+}
+
+const getLastId = () => {
+  let expenses = budgetListArr;
+  let expensesLen = expenses.length;
+  let r = expensesLen ? expenses[expensesLen - 1]['id'] : 1;
+  console.log(r)
+  return r;
+}
 
 
