@@ -20,29 +20,56 @@ let totalBal = document.querySelector('.tBalance').innerHTML
 let incomeField = document.querySelector('.txt-income')
 let addBudgetTitle = document.querySelector('.budgetTitle')
 let addBudgetPrice = document.querySelector('.budgetPrice')
-let incomeResult
-let expensesArray = []
-
-btnAddIncome.addEventListener('click', () => {
-  incomeResult = Number(incomeValue) + Number(incomeField.value)
-  console.log(incomeResult)
-  incomeValue = incomeResult
-  incomeResult = document.querySelector('.income-value2')
-  incomeResult.innerHTML = incomeValue
-  incomeField.value = ''
-})
+let budgetHolder = document.querySelector('.table-holder')
+let displayMsg = "Empty budget lists";
+let storageName = 'budgetList';
+let budgetListArr = []
 
 
-let displayExp = () => {
-  expensesArray.forEach( expensesList => {
+window.addEventListener('load', () => {
+  init();
+  addBudget()
+  addExpensesList()
+});
 
+
+
+let init = () => {
+  let loadBudgets = localStorage.getItem(storageName)
+  if(loadBudgets) {
+    budgetListArr = JSON.parse(loadBudgets)
+    // displayBudgets();
+  } else {
+    localStorage.setItem(storageName, JSON.stringify([]));
+    hideDisplayMsg();
+  }
+}
+
+let addBudget = () => {
+  btnAddIncome.addEventListener('click', () => {
+    let incomeResult
+    incomeResult = Number(incomeValue) + Number(incomeField.value)
+    console.log(incomeResult)
+    incomeValue = incomeResult
+    incomeResult = document.querySelector('.income-value2')
+    incomeResult.innerHTML = incomeValue
+    incomeField.value = ''
   })
 }
 
-
-let addExpenses = (expensesList) => {
-  expensesArray.push(expensesList)
+let addExpensesList = () => {
+  btnAddIncome.addEventListener('click', () => {
+    let incomeResult
+    incomeResult = Number(incomeValue) + Number(incomeField.value)
+    console.log(incomeResult)
+    incomeValue = incomeResult
+    incomeResult = document.querySelector('.income-value2')
+    incomeResult.innerHTML = incomeValue
+    incomeField.value = ''
+  })
 }
 
+let hideDisplayMsg = () => budgetHolder.innerHTML = displayMsg;
+hideDisplayMsg()
 
 
