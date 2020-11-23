@@ -13,117 +13,56 @@ const now = new Date()
 const date = document.querySelector('#date').innerHTML = dateBuilder(now)
 
 // ============= declarartion of variables ============
-let btnAddIncome = document.querySelector('.btn-add-income')
-let btnAddExp = document.querySelector('.btn-add-expense')
-let incomeValue = document.querySelector('.income-value2').innerHTML
-let totalExp = document.querySelector('.tExpences').innerHTML
-let totalBal = document.querySelector('.tBalance').innerHTML
-let incomeField = document.querySelector('.txt-income')
-let addBudgetTitle = document.querySelector('.budgetTitle')
-let addBudgetPrice = document.querySelector('.budgetPrice')
+let btnAddBudget = document.querySelector('.btnAddBudget')
+let btnAddExpenses = document.querySelector('.btn-add-expense')
+let estimatedBudget = document.querySelector('.estimatedBudget').innerHTML
+let totalExpenses = document.querySelector('.tExpences')
+let totalBalance = document.querySelector('.tBalance')
+let txtBudgetField = document.querySelector('.txtBudgetField')
+let txtExpenseTitle = document.querySelector('.txtExpenseTitle')
+let txtExpensesPrice = document.querySelector('.txtExpensesPrice')
 let budgetHolder = document.querySelector('.table-holder')
 let displayMsg = "Empty budget lists";
 let storageName = 'budgetList';
 let budgetListArr = []
 
-
 window.addEventListener('load', () => {
-  init();
   addBudget()
-  saveBudget()
+  hideDisplayMsg()
+  saveExpenses()
 });
 
 
-
-const init = () => {
-  let loadBudgets = localStorage.getItem(storageName)
-  if(loadBudgets) {
-    budgetListArr = JSON.parse(loadBudgets)
-    // displayBudgets();
-  } else {
-    localStorage.setItem(storageName, JSON.stringify([]));
-    hideDisplayMsg();
-  }
-}
-
 const addBudget = () => {
-  btnAddIncome.addEventListener('click', () => {
-    if (incomeField.value.length == 0) {
+  btnAddBudget.addEventListener('click', () => {
+    if (txtBudgetField.value.length == 0) {
       alert("Text field is empty")
     } else {
-      let incomeResult
-      incomeResult = Number(incomeValue) + Number(incomeField.value)
-      console.log(incomeResult)
-      incomeValue = incomeResult
-      incomeResult = document.querySelector('.income-value2')
-      incomeResult.innerHTML = incomeValue
-      incomeField.value = ''
+      let totalEstimatedBudgetResult
+      totalEstimatedBudgetResult = Number(estimatedBudget) + Number(txtBudgetField.value)
+      console.log(totalEstimatedBudgetResult)
+      estimatedBudget = totalEstimatedBudgetResult
+      totalEstimatedBudgetResult = document.querySelector('.estimatedBudget')
+      totalEstimatedBudgetResult.innerHTML = estimatedBudget
+      txtBudgetField.value = ''
     }
   })
 }
 
 let hideDisplayMsg = () => budgetHolder.innerHTML = displayMsg;
 
-const saveBudget = () => {
-  btnAddExp.addEventListener('click', () => {
-    if (addBudgetTitle.value.length == 0 || addBudgetPrice.value.length == 0) {
+const saveExpenses = () => {
+  btnAddExpenses.addEventListener('click', () => {
+    let expense = Number(txtExpensesPrice.value);
+    let title = txtExpenseTitle.value;
+    if (title.length == 0 || expense.length == 0) {
       alert("Title or expenses field is empty :)")
     } else {
-      let id = getLastId() + 1;
-      // let expenseData = {
-      //   id,
-      //   title,
-      //   expense,
-      // };
-      // budgetListArr.push(expenseData);
-      updateLocalS();
-      // renderMovies(budgetListArr);
-      addBudgetTitle.value = addBudgetPrice.value = ''
+      let savedEstimatedBudget = Number(document.querySelector('.estimatedBudget').textContent)
+      totalExpenses.innerHTML = Number(totalExpenses.innerHTML) + expense
+      totalBalance.innerHTML =  savedEstimatedBudget - totalExpenses.innerHTML
+      console.log(totalBalance.innerHTML)
+      txtExpenseTitle.value = txtExpensesPrice.value = ''
     }
   })
 }
-
-const updateLocalS = () =>  localStorage.setItem(storageName, JSON.stringify(budgetListArr));
-
-const createHeaderRow = () => {
-  let headerContent = ['S/N', 'TITLE', 'EXPENSES', 'ACTIONS'];
-  let tr = document.createElement('tr');
-  for(let i = 0; i < headerContent.length; i++){
-      let td = document.createElement('td');
-      td.innerHTML = headerContent[i] ;
-      tr.appendChild(td);
-  }
-  return tr;
-}
-
-
-function createMovieRows(movie, sn){
-  let tr = document.createElement('tr');
-  let snTd = document.createElement('td');
-  snTd.innerHTML = sn + 1;
-  let keys = ['title', 'expenses'];
-  tr.appendChild(snTd);
-  for(let i = 0; i < keys.length; i++){
-      let td = document.createElement('td');
-      td.innerHTML = movie[keys[i]];
-      tr.appendChild(td);
-  }
-  let actionTd = document.createElement('td');
-  let deletebtn = document.createElement('button');
-  deletebtn.classList.add('delete');
-  deletebtn.dataset.id = movie.id;
-  deletebtn.innerHTML = 'delete';
-  actionTd.appendChild(deletebtn);
-  tr.appendChild(actionTd);
-  return tr;
-}
-
-const getLastId = () => {
-  let expenses = budgetListArr;
-  let expensesLen = expenses.length;
-  let r = expensesLen ? expenses[expensesLen - 1]['id'] : 1;
-  console.log(r)
-  return r;
-}
-
-
