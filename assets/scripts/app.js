@@ -49,7 +49,7 @@ const addBudget = () => {
   })
 }
 
-let hideDisplayMsg = () => budgetHolder.innerHTML = displayMsg;
+const hideDisplayMsg = () => budgetHolder.innerHTML = displayMsg;
 
 const saveExpenses = () => {
   btnAddExpenses.addEventListener('click', () => {
@@ -58,7 +58,7 @@ const saveExpenses = () => {
     if (title.length == 0 || expense.length == 0) {
       alert("Title or expenses field is empty :)")
     } else {
-      let savedEstimatedBudget = Number(document.querySelector('.estimatedBudget').textContent)
+      const savedEstimatedBudget = Number(document.querySelector('.estimatedBudget').textContent)
       totalExpenses.innerHTML = Number(totalExpenses.innerHTML) + expense
       totalBalance.innerHTML =  savedEstimatedBudget - totalExpenses.innerHTML
       console.log(totalBalance.innerHTML)
