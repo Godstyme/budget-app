@@ -22,7 +22,7 @@ let txtBudgetField = document.querySelector('.txtBudgetField')
 let txtExpenseTitle = document.querySelector('.txtExpenseTitle')
 let txtExpensesPrice = document.querySelector('.txtExpensesPrice')
 let budgetHolder = document.querySelector('.table-holder')
-let displayMsg = "Empty budget lists";
+// let displayMsg = "Empty budget lists";
 let storageName = 'budgetListStorage';
 let budgetList = []
 let totalEstimatedBudgetResult
@@ -51,8 +51,9 @@ const addBudget = () => {
       estimatedBudget = totalEstimatedBudgetResult
       totalEstimatedBudgetResult = document.querySelector('.estimatedBudget')
       totalEstimatedBudgetResult.innerHTML = estimatedBudget
-      console.log(budgetList.push(totalEstimatedBudgetResult))
-      renderBudget()
+      // console.log(budgetList.push(totalEstimatedBudgetResult))
+      // renderBudget()
+      localStorage.setItem(storageName,JSON.stringify([]))
       txtBudgetField.value = ''
     }
   })
@@ -76,9 +77,8 @@ const saveExpenses = () => {
   })
 }
 
-const renderBudget = () => {
-  budgetList.forEach(e => {
-    console.log(e.textContent)
-  })
-  localStorage.setItem(storageName,JSON.stringify([]))
-}
+// const renderBudget = () => {
+//   budgetList.forEach(e => {
+//     console.log(e.textContent)
+//   })
+// }
