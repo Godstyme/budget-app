@@ -36,18 +36,19 @@ let init = () => {
   if (loadFromLS) {
     budgetListArr = JSON.parse(loadFromLS)
     addBudget()
+    addBudgetKeyPress()
   } else {
     localStorage.setItem(storageName, JSON.stringify([]))
     // hideDisplayMsg()
   }
 }
 
-let totalEstimatedBudgetResult
 const addBudget = () => {
   btnAddBudget.addEventListener('click', () => {
     if (txtBudgetField.value.length == 0) {
       alert("Invalid input field... :)")
     } else {
+      let totalEstimatedBudgetResult
       totalEstimatedBudgetResult = Number(estimatedBudget) + Number(txtBudgetField.value)
       // console.log(totalEstimatedBudgetResult)
       estimatedBudget = totalEstimatedBudgetResult
@@ -57,6 +58,28 @@ const addBudget = () => {
       renderBudget()
       localStorage.setItem(storageName,JSON.stringify([]))
       txtBudgetField.value = ''
+    }
+  })
+}
+
+const addBudgetKeyPress = () => {
+  txtBudgetField.addEventListener('keyup', e => {
+    e.preventDefault()
+    if(e.keyCode === 13) {
+      if (txtBudgetField.value.length == 0) {
+        alert("Invalid input field... :)")
+      } else {
+        let totalEstimatedBudgetResult
+        totalEstimatedBudgetResult = Number(estimatedBudget) + Number(txtBudgetField.value)
+        // console.log(totalEstimatedBudgetResult)
+        estimatedBudget = totalEstimatedBudgetResult
+        totalEstimatedBudgetResult = document.querySelector('.estimatedBudget')
+        totalEstimatedBudgetResult.innerHTML = estimatedBudget
+        console.log(budgetListArr.push(totalEstimatedBudgetResult))
+        renderBudget()
+        localStorage.setItem(storageName,JSON.stringify([]))
+        txtBudgetField.value = ''
+      }
     }
   })
 }
