@@ -27,23 +27,35 @@ let storageName = 'budgetList';
 let budgetListArr = []
 
 window.addEventListener('load', () => {
-  addBudget()
-  hideDisplayMsg()
+  init()
   saveExpenses()
 });
 
+let init = () => {
+  let loadFromLS = localStorage.getItem(storageName)
+  if (loadFromLS) {
+    budgetListArr = JSON.parse(loadFromLS)
+    addBudget()
+  } else {
+    localStorage.setItem(storageName, JSON.stringify([]))
+    // hideDisplayMsg()
+  }
+}
 
+let totalEstimatedBudgetResult
 const addBudget = () => {
   btnAddBudget.addEventListener('click', () => {
     if (txtBudgetField.value.length == 0) {
-      alert("Text field is empty")
+      alert("Invalid input field... :)")
     } else {
-      let totalEstimatedBudgetResult
       totalEstimatedBudgetResult = Number(estimatedBudget) + Number(txtBudgetField.value)
-      console.log(totalEstimatedBudgetResult)
+      // console.log(totalEstimatedBudgetResult)
       estimatedBudget = totalEstimatedBudgetResult
       totalEstimatedBudgetResult = document.querySelector('.estimatedBudget')
       totalEstimatedBudgetResult.innerHTML = estimatedBudget
+      console.log(budgetListArr.push(totalEstimatedBudgetResult))
+      renderBudget()
+      localStorage.setItem(storageName,JSON.stringify([]))
       txtBudgetField.value = ''
     }
   })
@@ -63,6 +75,13 @@ const saveExpenses = () => {
       totalBalance.innerHTML =  savedEstimatedBudget - totalExpenses.innerHTML
       console.log(totalBalance.innerHTML)
       txtExpenseTitle.value = txtExpensesPrice.value = ''
+      renderExpenses()
     }
+  })
+}
+
+const renderBudget = () => {
+  budgetListArr.forEach(e => {
+    console.log(e.textContent)
   })
 }
