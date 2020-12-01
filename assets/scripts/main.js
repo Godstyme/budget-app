@@ -12,7 +12,7 @@ const dateBuilder = (d) => {
 const now = new Date()
 const date = document.querySelector('#date').innerHTML = dateBuilder(now)
 
-// ============= declarartion of variables ============
+// `````````````````` declarartion of variables ``````````````````
 let btnAddBudget = document.querySelector('.btnAddBudget')
 let btnAddExpenses = document.querySelector('.btn-add-expense')
 let estimatedBudget = document.querySelector('.estimatedBudget').innerHTML
@@ -25,20 +25,22 @@ let budgetHolder = document.querySelector('.table-holder')
 // let displayMsg = "Empty budget lists";
 let storageName = 'budgetListStorage';
 let budgetList = []
+let incomeList = []
+let incomeStorage = 'incomeStorage'
 let totalEstimatedBudgetResult
 
 window.addEventListener('load', () => {
   init()
-  saveExpenses()
+  addExpenses()
+  addBudget()
 });
 
 let init = () => {
-  let loadFromLS = localStorage.getItem(storageName)
-  if (loadFromLS) {
-    budgetList = JSON.parse(loadFromLS)
-    addBudget()
-  } else {
-    localStorage.setItem(storageName, JSON.stringify([]))
+  let incomeStorage
+  // let loadFromLS = localStorage.getItem(storageName)
+  // let loadIncomeFromLS = localStorage.getItem(incomeStorage)
+  if ( localStorage.getItem('incomeStorage')) {
+    incomeStorage =  localStorage.getItem(storageName)
   }
 }
 
@@ -51,34 +53,74 @@ const addBudget = () => {
       estimatedBudget = totalEstimatedBudgetResult
       totalEstimatedBudgetResult = document.querySelector('.estimatedBudget')
       totalEstimatedBudgetResult.innerHTML = estimatedBudget
-      // console.log(budgetList.push(totalEstimatedBudgetResult))
-      // renderBudget()
-      localStorage.setItem(storageName,JSON.stringify([]))
       txtBudgetField.value = ''
+      console.log(incomeList.push(totalEstimatedBudgetResult.innerHTML))
     }
+    let list = JSON.stringify(incomeList)
+    localStorage.setItem(incomeStorage,list)
   })
 }
 
 
-const saveExpenses = () => {
+const addExpenses = () => {
   btnAddExpenses.addEventListener('click', () => {
-    let expense = Number(txtExpensesPrice.value);
     let title = txtExpenseTitle.value;
+    let expense = Number(txtExpensesPrice.value);
     if (title.length == 0 || expense.length == 0) {
       alert("Title or expenses field is empty :)")
     } else {
       const savedEstimatedBudget = Number(document.querySelector('.estimatedBudget').textContent)
       totalExpenses.innerHTML = Number(totalExpenses.innerHTML) + expense
       totalBalance.innerHTML =  savedEstimatedBudget - totalExpenses.innerHTML
-      console.log(totalBalance.innerHTML)
+      let id = getLastId() + 1;
+      const expenseData = {
+        id,
+        title,
+        expense,
+      };
+      console.log(budgetList.push(expenseData))
       txtExpenseTitle.value = txtExpensesPrice.value = ''
       renderExpenses()
     }
   })
 }
 
-// const renderBudget = () => {
-//   budgetList.forEach(e => {
-//     console.log(e.textContent)
-//   })
-// }
+let renderExpenses = () => {
+  let expenses = budgetList;
+  if(expenses.length){
+      let table = `<table>
+      <thead>
+          <tr>
+              <th>S/N</th>
+              <th>TITLE</th>
+              <th>BUDGET</th>
+              <th >ACTIONS</th>
+          </tr>
+      </thead>
+      <tbody id="tbody">
+      `;
+      expenses.forEach((expense, idx) => {
+         table+=`<tr>
+          <td>${idx + 1}</td>
+          <td>${expense.title}</td>
+          <td>${expense.expense}</td>
+          <td style="display:grid; grid-template-columns: 30% 30%;">
+              <button id="btn-clear" class="btn bg-danger text-light" data-id="${expense.id}">delete</button>
+              <button id="btn-clear" class="btn bg-danger text-light" data-id="${expense.id}">edit</button>
+          </td>
+          </tr>`;
+      });
+      budgetHolder.innerHTML = table;
+      // addRemoveEvent();
+  } else {
+      // doNoMovies();
+      console.log('Error')
+  }
+}
+
+let getLastId = () => {
+  let expense = budgetList;
+  let budgetListLen = expense.length;
+  let r = budgetListLen ? expense[budgetListLen - 1]['id'] : 1;
+  return r;
+} 
