@@ -140,6 +140,6 @@ th{text-transform: capitalize;text-align: left;}
   h1#table-cap,body > main.container > section.app-view > h1{letter-spacing: 2.5px;}
   .app-caption{padding: 30px 0px;}
   body > main.container > section.app-view > div.budget-date-update {margin-bottom: 0px; padding: 0px 0px; }
-  .table-holder{background: green !important;overflow-x: scroll;}
+  .table-holder{overflow-x: scroll;}
 }
 button#btn-print{font-size: 1.4em; cursor: pointer;padding: 10px 15px; background: #1F2C5B; color: #fff; width: 20%; letter-spacing: 2px; border: none;}
