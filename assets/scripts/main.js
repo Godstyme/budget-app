@@ -85,42 +85,42 @@ const addExpenses = () => {
   })
 }
 
-let renderExpenses = () => {
-  let expenses = budgetList;
-  if(expenses.length){
-      let table = `<table>
-      <thead>
-          <tr>
-              <th>S/N</th>
-              <th>TITLE</th>
-              <th>BUDGET</th>
-              <th >ACTIONS</th>
-          </tr>
-      </thead>
-      <tbody id="tbody">
-      `;
-      expenses.forEach((expense, idx) => {
-         table+=`<tr>
-          <td>${idx + 1}</td>
-          <td>${expense.title}</td>
-          <td>${expense.expense}</td>
-          <td style="display:grid; grid-template-columns: 30% 30%;">
-              <button id="btn-clear" class="btn bg-danger text-light" data-id="${expense.id}">delete</button>
-              <button id="btn-clear" class="btn bg-danger text-light" data-id="${expense.id}">edit</button>
-          </td>
-          </tr>`;
-      });
-      budgetHolder.innerHTML = table;
-      // addRemoveEvent();
-  } else {
-      // doNoMovies();
-      console.log('Error')
-  }
-}
+// let renderExpenses = () => {
+//   let expenses = budgetList;
+//   if(expenses.length){
+//       let table = `<table>
+//       <thead>
+//           <tr>
+//               <th>S/N</th>
+//               <th>TITLE</th>
+//               <th>BUDGET</th>
+//               <th >ACTIONS</th>
+//           </tr>
+//       </thead>
+//       <tbody id="tbody">
+//       `;
+//       expenses.forEach((expense, idx) => {
+//          table+=`<tr>
+//           <td>${idx + 1}</td>
+//           <td>${expense.title}</td>
+//           <td>${expense.expense}</td>
+//           <td style="display:grid; grid-template-columns: 30% 30%;">
+//               <button id="btn-clear" class="btn bg-danger text-light" data-id="${expense.id}">delete</button>
+//               <button id="btn-clear" class="btn bg-danger text-light" data-id="${expense.id}">edit</button>
+//           </td>
+//           </tr>`;
+//       });
+//       budgetHolder.innerHTML = table;
+//       // addRemoveEvent();
+//   } else {
+//       // doNoMovies();
+//       console.log('Error')
+//   }
+// }
 
-let getLastId = () => {
-  let expense = budgetList;
-  let budgetListLen = expense.length;
-  let r = budgetListLen ? expense[budgetListLen - 1]['id'] : 1;
-  return r;
-} 
+// let getLastId = () => {
+//   let expense = budgetList;
+//   let budgetListLen = expense.length;
+//   let r = budgetListLen ? expense[budgetListLen - 1]['id'] : 1;
+//   return r;
+// } 
