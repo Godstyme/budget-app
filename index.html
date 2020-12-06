@@ -21,7 +21,7 @@
           </div>
           <div class="budget-inc-exp-bal-holder">
             <div class="budget-cap income-value">
-              <span>&#8358; </span><span class="income-value2">0</span>
+              <span>&#8358; </span><span class="estimatedBudget">0</span>
             </div>
             <div class="budget-cap expenses">
               <span>&#8358; </span><span class="tExpences">0</span>
@@ -36,55 +36,32 @@
             <label for="">Add Income</label>
             <div class="inputHolder">
               <!-- <input type="text" name="" class="txt" placeholder="Enter your Expences title ..."> -->
-              <input type="text" class="txt txt-income" placeholder="Enter your amount(&#8358;)...">
+              <input type="text" class="txt txtBudgetField" placeholder="Enter your amount(&#8358;)...">
             </div>
             <div>
-              <button class="btn btn-add-income">Add Income</button>
+              <button class="btn btnAddBudget">Add Income</button>
             </div>
           </div>
           <div class="add-budget add-exp-holder">
             <label for="">Add Expenses</label>
             <div class="inputHolder">
-              <input type="text" class="txt budgetTitle" placeholder="Enter your Expences title ...">
-              <input type="text" class="txt budgetPrice" placeholder="Enter your amount(&#8358;)...">
+              <input type="text" class="txt txtExpenseTitle" placeholder="Enter your Expences title ...">
+              <input type="text" class="txt txtExpensesPrice" placeholder="Enter your amount(&#8358;)...">
             </div>
             <div>
-              <button class="btn">Add Expences</button>
+              <button class="btn btn-add-expense">Add Expences</button>
             </div>
           </div>
         </section>
         <div>
           <h1 id="table-cap">Budgets</h1>
           <div  class="table-holder" style="color: #fff;">
-            <!-- <h2 style="color: #fff;">Empty budget lists</h2> -->
-            <!-- <table>
-              <thead>
-                <tr>
-                  <th>s/n</th>
-                  <th>Title</th>
-                  <th>Expenses</th>
-                  <th>action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>s/n</td>
-                  <td>Title</td>
-                  <td>Expenses</td>
-                  <td>action</td>
-                </tr>
-                <tr>
-                  <td>s/n</td>
-                  <td>Title</td>
-                  <td>Expenses</td>
-                  <td>action</td>
-                </tr>
-              </tbody>
-            </table> -->
           </div>
+          <div><button onclick="print()" id="btn-print">Print</button></div>
         </div>
       </section>
     </main>
-    <script src="assets/scripts/app.js"></script>
+    <!-- <script src="assets/scripts/app.js"></script> -->
+    <script src="assets/scripts/main.js"></script>
   </body>
 </html>

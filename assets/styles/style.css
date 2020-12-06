@@ -16,7 +16,6 @@ body > main.container {
 body > main.container > section.app-view {
    width: 60%;
    background: #18204A;
-   border-radius: 30px 30px 0px 0px;
    padding: 20px 10px;
 }
 body > main.container > section.app-view > h1 {
@@ -92,11 +91,8 @@ th{text-transform: capitalize;text-align: left;}
 
 @media screen and (max-width: 299px) and (min-width: 200px) {
   *{font-size: 1em !important;}
-  body{background: #2f303a;}
-  body > main.container > section.app-view {
-    width: 90%;
-    border-radius: 0px;
- }
+  body{background: #18204A;}
+  body > main.container > section.app-view { width: 90%;}
  body > main.container > section.app-view > section.budget-info-holder > div.budget-inc-exp-bal-holder {
   display: grid;
   grid-template-columns: repeat(3, 30%);
@@ -121,9 +117,9 @@ th{text-transform: capitalize;text-align: left;}
 }
 
 @media screen and (max-width: 1000px) and (min-width: 300px) {
-  *{font-size: 1em !important;}
+  *{font-size: 1em !important;}body{background: #18204A;}
   body > main.container {padding: 0px 0px 30px 0px;}
-  body > main.container > section.app-view {width: 100%;border-radius: 0px;}
+  body > main.container > section.app-view {width: 100%;}
   body > main.container > section.app-view > section.budget-info-holder > div.budget-inc-exp-bal-holder {
     display: grid;
     grid-template-columns: repeat(3, 30%);
@@ -141,8 +137,9 @@ th{text-transform: capitalize;text-align: left;}
   div.add-inco-holder{height: auto !important;}
   input.txt{font-size: 1.2em; padding: 4px 8px;}
   button.btn{padding: 10px 40px; margin-top: 1.6em;}
-  body{background: #2f303a;}
   h1#table-cap,body > main.container > section.app-view > h1{letter-spacing: 2.5px;}
   .app-caption{padding: 30px 0px;}
   body > main.container > section.app-view > div.budget-date-update {margin-bottom: 0px; padding: 0px 0px; }
+  .table-holder{overflow-x: scroll;}
 }
+button#btn-print{font-size: 1.4em; cursor: pointer;padding: 10px 15px; background: #1F2C5B; color: #fff; width: 20%; letter-spacing: 2px; border: none;}
